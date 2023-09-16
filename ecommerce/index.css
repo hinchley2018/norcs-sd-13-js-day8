@@ -1,0 +1,8 @@
+.product-card {
+    border: 1px solid black;
+    
+}
+
+.products-container{
+    display: flex;
+}
