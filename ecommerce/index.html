@@ -15,7 +15,8 @@
         <form id="search-form">
             <input id="product-search-input" placeholder="Product search" type="text"/>
             <!-- call searchProducts function when user clicks -->
-            <button type="button" onclick="searchProducts()">Search</button>
+            <button id="apply-filter-button">Apply filter</button>
+            <button id="search-button" type="button" onclick="searchProducts()">Search</button>
             <button type="button" onclick="messageStudents()">New stuff</button>
         </form>
         <!-- there is one products container -->
@@ -27,7 +28,7 @@
             </div>
             <div class="product-card">
                 <h2 class="product-title">Blue ribbon dog food</h2>
-                <b><p>$59.99</p></b>
+                <b><p class="product-price">$59.99</p></b>
             </div>
             <div class="product-card">
                 <h2 class="product-title">Blue ribbon dog food</h2>

@@ -6,3 +6,8 @@
 .products-container{
     display: flex;
 }
+
+/* probably a more flexible extensible way to style */
+.product-price {
+    color: #FFFFFF;
+}

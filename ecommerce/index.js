@@ -90,3 +90,22 @@ function searchProducts(){
 function messageStudents(){
     alert("This is much better, please use the pattern of js code in .js and html in html")
 }
+
+//selecting elements
+let searchForm = document.querySelector("#search-form")
+console.log(searchForm)
+
+
+//brittle can break
+// console.log(document.querySelector("button"))
+// console.log(searchForm.children[1])
+
+let searchButton = document.querySelector("#search-button")
+console.log("selected by id",searchButton)
+
+let productCards = document.querySelectorAll(".product-card")
+console.log("selected by class", productCards)
+
+
+//js can change the style elements but can get unwieldy with too much
+document.querySelector(".product-price").style.color = "greeen"
