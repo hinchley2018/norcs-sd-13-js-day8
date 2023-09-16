@@ -28,7 +28,7 @@ function searchProductList(searchTerm) {
     })
 }
 
-function getAvailableFilters(){
+function getAvailableFilters() {
     return new Promise((resolve, reject) => {
         let availableFilters = {
             brands: ["Blue ribbon", "Pedigree", "Amazon Basics"],
@@ -39,29 +39,32 @@ function getAvailableFilters(){
         resolve(availableFilters)
     })
 }
-function displayFilters(){}
-function displayProducts() {}
+function displayFilters() { }
+function displayProducts() { }
 //build the page
 async function buildSearchPage() {
-    debugger
-    let userSearchTerm = prompt("Enter the product you want to search")
-    if (userSearchTerm === undefined) {
-        console.log("go to homescreen")
-    }
+    
     //get filters
-    let filters = await getAvailableFilters()
-    displayFilters(filters)
+    // let filters = await getAvailableFilters()
+    // displayFilters(filters)
     let userFilters = {
         brand: "Pedigree",
         type: "dry"
     }
-    let products = await searchProductList(userSearchTerm,userFilters)
+    // let products = await searchProductList(userSearchTerm, userFilters)
+
+    let products = searchProducts()
     //assume I can draw on screen, how to get the products?
-    displayProducts(products)
+    products.forEach(p => addProductCard(p.name,p.price))
 }
-
-
-function searchProducts(){
+buildSearchPage()
+{/* 
+<div class="product-card">
+    <h2 class="product-title">Blue ribbon dog food</h2>
+    <b><p>$59.99</p></b>
+</div> 
+*/}
+function searchProducts() {
     let products = [
         {
             name: "Pedigree Dog food",
@@ -84,28 +87,65 @@ function searchProducts(){
             price: 3.74
         }
     ]
-    console.log(products)
+    return (products)
 }
 
-function messageStudents(){
+function messageStudents() {
     alert("This is much better, please use the pattern of js code in .js and html in html")
 }
 
 //selecting elements
-let searchForm = document.querySelector("#search-form")
-console.log(searchForm)
+// let searchForm = document.querySelector("#search-form")
+// console.log(searchForm)
 
 
 //brittle can break
 // console.log(document.querySelector("button"))
 // console.log(searchForm.children[1])
 
-let searchButton = document.querySelector("#search-button")
-console.log("selected by id",searchButton)
+// let searchButton = document.querySelector("#search-button")
+// console.log("selected by id",searchButton)
 
-let productCards = document.querySelectorAll(".product-card")
-console.log("selected by class", productCards)
+// let productCards = document.querySelectorAll(".product-card")
+// console.log("selected by class", productCards)
 
 
 //js can change the style elements but can get unwieldy with too much
-document.querySelector(".product-price").style.color = "greeen"
+// document.querySelector(".product-price").style.color = "greeen"
+
+{/* 
+<div class="product-card">
+    <h2 class="product-title">Blue ribbon dog food</h2>
+    <p>$59.99</p>
+</div> 
+*/}
+function addProductCard(productName, productPrice) {
+
+    //i'm assemblying an h2
+    let productsContainer = document.querySelector("#products-container")
+    console.log("conatiner", productsContainer)
+
+    let productCard = document.createElement("div")
+    //allows you to add any html attribute and value
+    productCard.setAttribute("class", "product-card")
+
+    let productHeader = document.createElement("h2")
+    productHeader.textContent = productName
+
+    //install the part onto house
+    //a better place would products container right?
+    productCard.append(productHeader)
+
+    //How to create price paragrahp
+    let priceP = document.createElement('p')
+    priceP.textContent = productPrice
+    productCard.append(priceP)
+
+    //append product card to container
+    productsContainer.append(productCard)
+
+}
+
+// addProductCard("Pedigree dog food", "$59.99")
+
+
